@@ -16,7 +16,7 @@ CREATE INDEX repair_date_index ON Repair_date (start_date);
 
 1 join         X
 2.left join    X
-3 right join
+3 right join   X  
 4 full join
 5 distinct
 6 count        X
@@ -27,8 +27,8 @@ CREATE INDEX repair_date_index ON Repair_date (start_date);
 11 mniej wie
 
 
-group by
-order by
+group by        X
+order by        X
 update
 union
 
@@ -44,6 +44,13 @@ CREATE VIEW car_count AS
 SELECT COUNT(*) as car_count
 FROM Car;
 
+/*Widok sumy pracowników według warsztatu*/
+
+CREATE VIEW suma_pracowników_warsztat_desc AS
+    SELECT COUNT(employee_id) as 'Workers',shop_name FROM Schedule
+    right join Repair_shop Rs on Schedule.repair_shop_id = Rs.id
+    group by repair_shop_id
+    order by COUNT(employee_id) desc;
 
 /*Widok który zawiera liczbę samochodów przypisanych do klienta, jego imię i nazwisko.*/
 CREATE VIEW Customer_Car_count AS
