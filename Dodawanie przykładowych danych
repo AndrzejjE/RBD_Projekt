@@ -119,7 +119,7 @@ insert into Employee (id, first_name, last_name, employment_start, city_id, avai
 insert into Employee (id, first_name, last_name, employment_start, city_id, availability) values (15, 'Lanny', 'Gockeler', '2022-03-30 04:34:16', 79, 'no');
 insert into Employee (id, first_name, last_name, employment_start, city_id, availability) values (16, 'Sharla', 'Lorant', '2022-07-21 03:18:49', 88, 'yes');
 insert into Employee (id, first_name, last_name, employment_start, city_id, availability) values (17, 'Tiena', 'Babon', '2022-03-13 13:29:55', 97, 'yes');
-insert into Employee (id, first_name, last_name, employment_start, city_id, aavailability) values (18, 'Crista', 'Phoenix', '2022-06-09 10:32:52', 43, 'yes');
+insert into Employee (id, first_name, last_name, employment_start, city_id, availability) values (18, 'Crista', 'Phoenix', '2022-06-09 10:32:52', 43, 'yes');
 insert into Employee (id, first_name, last_name, employment_start, city_id, availability) values (19, 'Martie', 'Korpal', '2022-01-29 20:55:27', 5, 'no');
 insert into Employee (id, first_name, last_name, employment_start, city_id, availability) values (20, 'Brunhilde', 'Beedie', '2022-04-29 03:00:14', 59, 'no');
 insert into Employee (id, first_name, last_name, employment_start, city_id, availability) values (21, 'Allx', 'Harmon', '2021-12-28 01:11:38', 32, 'no');
