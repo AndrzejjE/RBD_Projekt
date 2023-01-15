@@ -1,1 +1,2 @@
-
+DROP VIEW pracownicy_warsztatu_Wyman_Inc;
+DROP VIEW suma_pracowników_warsztat_desc;
