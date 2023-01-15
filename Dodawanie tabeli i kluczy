@@ -1,0 +1,233 @@
+CREATE TABLE Schedule(
+    id int,
+    repair_shop_id int,
+    employee_id int,
+    repair_date_id int
+);
+CREATE Table Repair_shop(
+    id int,
+    shop_name varchar(50),
+    adress_id int
+);
+CREATE TABLE City(
+    id int,
+    city_name varchar(50),
+    postal_code varchar(10)
+);
+CREATE TABLE Employee(
+    id int,
+    first_name varchar(30),
+    last_name varchar(30),
+    employment_start DATE,
+    city_id int,
+    avability varchar(3)
+);
+CREATE TABLE Repair_date(
+    id int,
+    start_date DATE,
+    estemated_end_date DATE,
+    end_date DATE
+);
+CREATE TABLE Customer(
+    id int,
+    first_name varchar(50),
+    last_name varchar(50),
+    adress_id int,
+    email varchar(50)
+);
+CREATE TABLE Adress(
+    id int,
+    city_id int,
+    street varchar(60),
+    house_number int
+);
+CREATE TABLE Car(
+    id int,
+    vin varchar(30),
+    license_plate varchar(20),
+    customer_id int,
+    model_id int,
+    manufacturer_id int,
+    manufactured_year int,
+    manufactured_month int
+);
+CREATE TABLE Manufacturer(
+    id int,
+    manufacturer_name varchar(50),
+    manufacturer_country varchar(50)
+);
+CREATE TABLE Model(
+    id int,
+    model_name varchar(50),
+    make_date DATE,
+    vehicle_type varchar(30)
+);
+CREATE TABLE Service(
+    id int,
+    customer_id int,
+    schedule_id int,
+    service_discount int,
+    service_price double
+);
+CREATE TABLE Task(
+    id int,
+    service_id int,
+    task_catalog_id int
+);
+CREATE TABLE Task_catalog(
+    id int,
+    task_name varchar(150),
+    `description` varchar(150),
+    task_price double,
+    time_required int
+);
+
+
+
+
+
+ALTER TABLE Model
+ADD PRIMARY KEY (id);
+
+ALTER TABLE Manufacturer
+ADD PRIMARY KEY (id);
+
+ALTER TABLE Adress
+ADD PRIMARY KEY (id);
+
+ALTER TABLE Car
+ADD PRIMARY KEY (id);
+
+ALTER TABLE City
+ADD PRIMARY KEY (id);
+
+ALTER TABLE Customer
+ADD PRIMARY KEY (id);
+
+ALTER TABLE Employee
+ADD PRIMARY KEY (id);
+
+ALTER TABLE Repair_date
+ADD PRIMARY KEY (id);
+
+ALTER TABLE Repair_shop
+ADD PRIMARY KEY (id);
+
+ALTER TABLE Schedule
+ADD PRIMARY KEY (id);
+
+ALTER TABLE Service
+ADD PRIMARY KEY (id);
+
+ALTER TABLE Task
+ADD PRIMARY KEY (id);
+
+ALTER TABLE Task_catalog
+ADD PRIMARY KEY (id);
+
+
+
+
+ALTER TABLE Car
+    ADD CONSTRAINT id_customer_fk
+        FOREIGN KEY (customer_id)
+            REFERENCES Customer (id)
+            ON UPDATE CASCADE
+            ON DELETE CASCADE;
+
+ALTER TABLE Car
+    ADD CONSTRAINT id_model_fk
+        FOREIGN KEY (model_id)
+            REFERENCES Model (id)
+            ON UPDATE CASCADE
+            ON DELETE CASCADE;
+
+
+
+ALTER TABLE Car
+    ADD CONSTRAINT id_manufacturer_fk
+        FOREIGN KEY (manufacturer_id)
+            REFERENCES Manufacturer (id)
+            ON UPDATE CASCADE
+            ON DELETE CASCADE;
+
+
+ALTER TABLE Task
+    ADD CONSTRAINT id_task_catalog_fk
+        FOREIGN KEY (task_catalog_id)
+            REFERENCES Task_catalog (id)
+            ON UPDATE CASCADE
+            ON DELETE CASCADE;
+
+ALTER TABLE Task
+    ADD CONSTRAINT id_service_fk
+        FOREIGN KEY (service_id)
+            REFERENCES Service (id)
+            ON UPDATE CASCADE
+            ON DELETE CASCADE;
+
+
+ALTER TABLE Service
+    ADD CONSTRAINT id_customer_fk2
+        FOREIGN KEY (customer_id)
+            REFERENCES Customer (id)
+            ON UPDATE CASCADE
+            ON DELETE CASCADE;
+
+ALTER TABLE Service
+    ADD CONSTRAINT id_schedule_fk
+        FOREIGN KEY (schedule_id)
+            REFERENCES Schedule (id)
+            ON UPDATE CASCADE
+            ON DELETE CASCADE;
+
+
+ALTER TABLE Customer
+    ADD CONSTRAINT id_adress_fk
+        FOREIGN KEY (adress_id)
+            REFERENCES Adress (id)
+            ON UPDATE CASCADE
+            ON DELETE CASCADE;
+
+ALTER TABLE Adress
+    ADD CONSTRAINT id_city_fk
+        FOREIGN KEY (city_id)
+            REFERENCES City (id)
+            ON UPDATE CASCADE
+            ON DELETE CASCADE;
+
+
+ALTER TABLE Repair_shop
+    ADD CONSTRAINT id_adress_fk2
+        FOREIGN KEY (adress_id)
+            REFERENCES Adress (id)
+            ON UPDATE CASCADE
+            ON DELETE CASCADE;
+
+ALTER TABLE Schedule
+    ADD CONSTRAINT id_repair_shop_fk
+        FOREIGN KEY (repair_shop_id)
+            REFERENCES Repair_shop (id)
+            ON UPDATE CASCADE
+            ON DELETE CASCADE;
+
+ALTER TABLE Schedule
+    ADD CONSTRAINT id_employee_fk
+        FOREIGN KEY (employee_id)
+            REFERENCES Employee (id)
+            ON UPDATE CASCADE
+            ON DELETE CASCADE;
+
+ALTER TABLE Schedule
+    ADD CONSTRAINT id_repair_date_fk
+        FOREIGN KEY (repair_date_id)
+            REFERENCES Repair_date (id)
+            ON UPDATE CASCADE
+            ON DELETE CASCADE;
+
+ALTER TABLE Employee
+    ADD CONSTRAINT id_city_fk3
+        FOREIGN KEY (city_id)
+            REFERENCES City (id)
+            ON UPDATE CASCADE
+            ON DELETE CASCADE;
