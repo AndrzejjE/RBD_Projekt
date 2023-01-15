@@ -77,12 +77,11 @@ CREATE VIEW repair_dates_between AS
 SELECT * FROM Repair_date
 WHERE start_date BETWEEN '2022-01-01' AND '2022-12-30';
 
-/* UPDATE */
-
-UPDATE Schedule SET repair_shop_id = 90 WHERE employee_id = 39;
-
 CREATE VIEW car_manufacturer AS
 SELECT Car.*, Manufacturer.manufacturer_name
 FROM Car
 LEFT JOIN Manufacturer ON Car.manufacturer_id = Manufacturer.id
 
+/* UPDATE */
+
+UPDATE Schedule SET repair_shop_id = 90 WHERE employee_id = 39;
