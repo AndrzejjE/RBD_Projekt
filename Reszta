@@ -16,14 +16,14 @@ CREATE INDEX repair_date_index ON Repair_date (start_date);
 
 1 join         X
 2.left join    X
-3 right join
+3 right join   X
 4 full join
-5 distinct
+5 distinct     X
 6 count        X
 7 sum          X
 8 avg          X
 9 like         X
-10 beetween
+10 beetween    X
 11 mniej wie
 
 
