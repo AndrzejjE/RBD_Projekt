@@ -21,7 +21,7 @@ CREATE INDEX repair_date_index ON Repair_date (start_date);
 5 distinct
 6 count        X
 7 sum          X
-8 avg
+8 avg          X
 9 like
 10 beetween
 11 mniej wie
@@ -60,4 +60,8 @@ FROM Service
 JOIN Customer ON Service.customer_id = Customer.id
 GROUP BY Customer.id;
 
+/*Widok zawierający średnią wartość ceny usług*/
+CREATE VIEW service_price_avg AS
+SELECT AVG(service_price) as avg_price
+FROM Service;
 
