@@ -94,3 +94,7 @@ SELECT DISTINCT city_name, postal_code FROM City;
 CREATE VIEW repair_dates_between AS
 SELECT * FROM Repair_date
 WHERE start_date BETWEEN '2022-01-01' AND '2022-12-30';
+
+/* UPDATE */
+
+UPDATE Schedule SET repair_shop_id = 90 WHERE employee_id = 39;
