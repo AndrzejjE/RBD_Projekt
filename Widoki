@@ -1,1 +1,87 @@
+/*Aby przyspieszyć wyszukiwanie po polu "vin" w tabeli "Car", można dodać indeks unikalny:  */
 
+CREATE UNIQUE INDEX vin_index ON Car (vin);
+
+/*Aby przyspieszyć wyszukiwanie po polach "first_name" i "last_name" w tabeli "Customer", można dodać indeks składający się z tych dwóch pól:*/
+
+CREATE INDEX customer_name_index ON Customer (first_name, last_name);
+
+/*Aby przyspieszyć wyszukiwanie po polu "city_name" w tabeli "City", można dodać indeks:*/
+
+CREATE INDEX city_name_index ON City (city_name);
+
+/*Aby przyspieszyć wyszukiwanie po polu "start_date" w tabeli "Repair_date", można dodać indeks:*/
+
+CREATE INDEX repair_date_index ON Repair_date (start_date);
+
+/*pracownicy warsztatu Wyman_Inc*/
+SELECT first_name as 'name', last_name as 'surname', shop_name FROM Employee
+    join Schedule S on Employee.id = S.employee_id
+    left join Repair_shop on S.repair_shop_id = Repair_shop.id
+    WHERE shop_name = 'Wyman Inc';
+
+CREATE VIEW suma_pracowników_warsztat_desc AS
+    SELECT COUNT(employee_id) as 'Workers',shop_name FROM Schedule
+    right join Repair_shop Rs on Schedule.repair_shop_id = Rs.id
+    group by repair_shop_id
+    order by COUNT(employee_id) desc;
+
+/*Liczenie liczby rekordów w tabeli Car*/
+CREATE VIEW car_count AS
+SELECT COUNT(*) as car_count
+FROM Car;
+
+
+/*Widok który zawiera liczbę samochodów przypisanych do klienta, jego imię i nazwisko.*/
+CREATE VIEW Customer_Car_count AS
+SELECT COUNT(Car.id) as car_count, Customer.id, Customer.first_name, Customer.last_name
+FROM Car
+JOIN Customer ON Car.customer_id = Customer.id
+GROUP BY Customer.id;
+
+
+/*Widok który zawiera cenę usług dla klienta, jego imię i nazwisko.*/
+CREATE VIEW Service_price_sum_by_customer AS
+SELECT SUM(Service.service_price) as total_price, Customer.id, Customer.first_name, Customer.last_name
+FROM Service
+JOIN Customer ON Service.customer_id = Customer.id
+GROUP BY Customer.id;
+
+/*Widok zawierający średnią wartość ceny usług*/
+CREATE VIEW service_price_avg AS
+SELECT AVG(service_price) as avg_price
+FROM Service;
+
+/*Widok zawiera rekordy z tabeli "Car" i "Model" , które mają frazę "A6" w polu "model_name" tabeli "Model".*/
+CREATE VIEW car_models_like_A6 AS
+SELECT Car.vin, Car.license_plate, Model.model_name
+FROM Car
+JOIN Model ON Car.model_id = Model.id
+WHERE Model.model_name LIKE '%A6%';
+
+
+/*Widok który łączy dane z tabeli "Customer" i "Employee" */
+CREATE VIEW customer_and_employee AS
+SELECT first_name, last_name, email FROM Customer
+UNION
+SELECT first_name, last_name, city_id FROM Employee;
+
+
+/*Widok zawiera unikalne rekordy z tabeli "City" po kolumnach "city_name" i "postal_code".*/
+CREATE VIEW unique_cities AS
+SELECT DISTINCT city_name, postal_code FROM City;
+
+
+/*Widok zawiera wszystkie rekordy z tabeli "Repair_date" gdzie data "start_date" jest między '2022-01-01' a '2022-12-31'.*/
+CREATE VIEW repair_dates_between AS
+SELECT * FROM Repair_date
+WHERE start_date BETWEEN '2022-01-01' AND '2022-12-30';
+
+CREATE VIEW car_manufacturer AS
+SELECT Car.*, Manufacturer.manufacturer_name
+FROM Car
+LEFT JOIN Manufacturer ON Car.manufacturer_id = Manufacturer.id
+
+/* UPDATE */
+
+UPDATE Schedule SET repair_shop_id = 90 WHERE employee_id = 39;
