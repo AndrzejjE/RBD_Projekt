@@ -1,0 +1,25 @@
+/*Aby przyspieszyć wyszukiwanie po polu "vin" w tabeli "Car", można dodać indeks unikalny:  */
+CREATE UNIQUE INDEX vin_index ON Car (vin);
+/*Aby przyspieszyć wyszukiwanie po polach "first_name" i "last_name" w tabeli "Customer", można dodać indeks składający się z tych dwóch pól:*/
+CREATE INDEX customer_name_index ON Customer (first_name, last_name);
+/*Aby przyspieszyć wyszukiwanie po polu "city_name" w tabeli "City", można dodać indeks:*/
+CREATE INDEX city_name_index ON City (city_name);
+/*Aby przyspieszyć wyszukiwanie po polu "start_date" w tabeli "Repair_date", można dodać indeks:*/
+CREATE INDEX repair_date_index ON Repair_date (start_date);
+
+
+
+
+/*Liczenie liczby rekordów w tabeli Car*/
+CREATE VIEW car_count AS
+SELECT COUNT(*) as car_count
+FROM Car;
+
+
+/*Widok który zawiera liczbę samochodów przypisanych do klienta, jego imię i nazwisko.*/
+CREATE VIEW Customer_Car_count AS
+SELECT COUNT(Car.id) as car_count, Customer.id, Customer.first_name, Customer.last_name
+FROM Car
+JOIN Customer ON Car.customer_id = Customer.id
+GROUP BY Customer.id;
+
