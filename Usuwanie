@@ -1,0 +1,202 @@
+
+DROP VIEW pracownicy_warsztatu_Wyman_Inc;
+DROP VIEW suma_pracowników_warsztat_desc;
+drop view Customer_Car_count;
+drop view Service_price_sum_by_customer;
+drop view car_count;
+drop view car_manufacturer;
+drop view car_models_like_A6;
+drop view customer_and_employee;
+drop view repair_dates_between;
+drop view service_price_avg;
+drop view unique_cities;
+
+TRUNCATE TABLE Car;
+TRUNCATE TABLE Model;
+TRUNCATE TABLE Manufacturer;
+TRUNCATE TABLE Task;
+TRUNCATE TABLE Task_catalog;
+TRUNCATE TABLE Service;
+TRUNCATE TABLE Customer;
+TRUNCATE TABLE Schedule;
+TRUNCATE TABLE Repair_shop;
+TRUNCATE TABLE Adress;
+TRUNCATE TABLE Repair_date;
+TRUNCATE TABLE Employee;
+TRUNCATE TABLE City;
+
+DROP TABLE Car;
+DROP TABLE Model;
+DROP TABLE Manufacturer;
+DROP TABLE Task;
+DROP TABLE Task_catalog;
+DROP TABLE Service;
+DROP TABLE Customer;
+DROP TABLE Schedule;
+DROP TABLE Repair_shop;
+DROP TABLE Adress;
+DROP TABLE Repair_date;
+DROP TABLE Employee;
+DROP TABLE City;
+
+alter table Adress
+    drop primary key;
+alter table Adress
+    drop foreign key id_city_fk;
+drop index `PRIMARY` on Adress;
+
+drop index id_city_fk on Adress;
+
+
+
+
+alter table Car
+    drop primary key;
+
+alter table Car
+    drop key vin_index;
+
+alter table Car
+    drop foreign key id_customer_fk;
+
+alter table Car
+    drop foreign key id_manufacturer_fk;
+
+alter table Car
+    drop foreign key id_model_fk;
+
+
+drop index `PRIMARY` on Car;
+
+drop index id_customer_fk on Car;
+
+drop index id_manufacturer_fk on Car;
+
+drop index id_model_fk on Car;
+
+drop index vin_index on Car;
+
+
+alter table City
+    drop primary key;
+drop index `PRIMARY` on City;
+
+drop index city_name_index on City;
+
+
+alter table Customer
+    drop primary key;
+
+alter table Customer
+    drop foreign key id_adress_fk;
+
+drop index `PRIMARY` on Customer;
+
+drop index customer_name_index on Customer;
+
+drop index id_adress_fk on Customer;
+
+
+
+alter table Employee
+    drop primary key;
+
+alter table Employee
+    drop foreign key id_city_fk3;
+
+drop index `PRIMARY` on Employee;
+
+drop index id_city_fk3 on Employee;
+
+
+
+alter table Manufacturer
+    drop primary key;
+
+drop index `PRIMARY` on Manufacturer;
+
+
+
+alter table Model
+    drop primary key;
+
+drop index `PRIMARY` on Model;
+
+
+
+alter table Repair_date
+    drop primary key;
+
+drop index `PRIMARY` on Repair_date;
+
+drop index repair_date_index on Repair_date;
+
+
+
+alter table Repair_shop
+    drop primary key;
+alter table Repair_shop
+    drop foreign key id_adress_fk2;
+drop index `PRIMARY` on Repair_shop;
+
+drop index id_adress_fk2 on Repair_shop;
+
+
+
+alter table Schedule
+    drop primary key;
+
+alter table Schedule
+    drop foreign key id_employee_fk;
+
+alter table Schedule
+    drop foreign key id_repair_date_fk;
+
+alter table Schedule
+    drop foreign key id_repair_shop_fk;
+
+drop index `PRIMARY` on Schedule;
+
+drop index id_employee_fk on Schedule;
+
+drop index id_repair_date_fk on Schedule;
+
+drop index id_repair_shop_fk on Schedule;
+
+
+
+alter table Service
+    drop primary key;
+
+alter table Service
+    drop foreign key id_customer_fk2;
+
+alter table Service
+    drop foreign key id_schedule_fk;
+
+drop index `PRIMARY` on Service;
+
+drop index id_customer_fk2 on Service;
+
+drop index id_schedule_fk on Service;
+
+alter table Task
+    drop primary key;
+
+alter table Task
+    drop foreign key id_service_fk;
+
+alter table Task
+    drop foreign key id_task_catalog_fk;
+
+drop index `PRIMARY` on Task;
+
+drop index id_service_fk on Task;
+
+drop index id_task_catalog_fk on Task;
+
+alter table Task_catalog
+    drop primary key;
+
+drop index `PRIMARY` on Task_catalog;
+
