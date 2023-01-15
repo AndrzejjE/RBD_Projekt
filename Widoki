@@ -15,11 +15,13 @@ CREATE INDEX city_name_index ON City (city_name);
 CREATE INDEX repair_date_index ON Repair_date (start_date);
 
 /*pracownicy warsztatu Wyman_Inc*/
-SELECT first_name as 'name', last_name as 'surname', shop_name FROM Employee
+CREATE VIEW pracownicy_warsztatu_Wyman_Inc AS
+    SELECT first_name as 'name', last_name as 'surname', shop_name FROM Employee
     join Schedule S on Employee.id = S.employee_id
     left join Repair_shop on S.repair_shop_id = Repair_shop.id
     WHERE shop_name = 'Wyman Inc';
 
+/*widok sumy pracowników według warsztatu*/
 CREATE VIEW suma_pracowników_warsztat_desc AS
     SELECT COUNT(employee_id) as 'Workers',shop_name FROM Schedule
     right join Repair_shop Rs on Schedule.repair_shop_id = Rs.id
