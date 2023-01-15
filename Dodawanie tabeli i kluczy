@@ -20,7 +20,7 @@ CREATE TABLE Employee(
     last_name varchar(30),
     employment_start DATE,
     city_id int,
-    avability varchar(3)
+    availability varchar(3)
 );
 CREATE TABLE Repair_date(
     id int,
