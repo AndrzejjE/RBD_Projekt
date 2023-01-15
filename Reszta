@@ -14,24 +14,6 @@ CREATE INDEX city_name_index ON City (city_name);
 
 CREATE INDEX repair_date_index ON Repair_date (start_date);
 
-1 join         X
-2.left join    X
-3 right join   X
-4 full join
-5 distinct     X
-6 count        X
-7 sum          X
-8 avg          X
-9 like         X
-10 beetween    X
-11 mniej wie
-
-
-group by    X
-order by    X
-update      
-union       X
-
 /*pracownicy warsztatu Wyman_Inc*/
 SELECT first_name as 'name', last_name as 'surname', shop_name FROM Employee
     join Schedule S on Employee.id = S.employee_id
@@ -98,3 +80,9 @@ WHERE start_date BETWEEN '2022-01-01' AND '2022-12-30';
 /* UPDATE */
 
 UPDATE Schedule SET repair_shop_id = 90 WHERE employee_id = 39;
+
+CREATE VIEW car_manufacturer AS
+SELECT Car.*, Manufacturer.manufacturer_name
+FROM Car
+LEFT JOIN Manufacturer ON Car.manufacturer_id = Manufacturer.id
+
