@@ -1,20 +1,40 @@
+
 DROP VIEW pracownicy_warsztatu_Wyman_Inc;
 DROP VIEW suma_pracowników_warsztat_desc;
-
 drop view Customer_Car_count;
-
 drop view Service_price_sum_by_customer;
-
 drop view car_count;
-
 drop view car_manufacturer;
-
 drop view car_models_like_A6;
-
 drop view customer_and_employee;
-
 drop view repair_dates_between;
-
 drop view service_price_avg;
-
 drop view unique_cities;
+
+TRUNCATE TABLE Adress;
+TRUNCATE TABLE Car;
+TRUNCATE TABLE City;
+TRUNCATE TABLE Customer;
+TRUNCATE TABLE Employee;
+TRUNCATE TABLE Manufacturer;
+TRUNCATE TABLE Model;
+TRUNCATE TABLE Repair_date;
+TRUNCATE TABLE Repair_shop;
+TRUNCATE TABLE Schedule;
+TRUNCATE TABLE Service;
+TRUNCATE TABLE Task;
+TRUNCATE TABLE Task_catalog;
+
+DROP TABLE Adress;
+DROP TABLE Car;
+DROP TABLE City;
+DROP TABLE Customer;
+DROP TABLE Employee;
+DROP TABLE Manufacturer;
+DROP TABLE Model;
+DROP TABLE Repair_date;
+DROP TABLE Repair_shop;
+DROP TABLE Schedule;
+DROP TABLE Service;
+DROP TABLE Task;
+DROP TABLE Task_catalog;
