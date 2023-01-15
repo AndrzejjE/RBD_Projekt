@@ -83,3 +83,14 @@ CREATE VIEW customer_and_employee AS
 SELECT first_name, last_name, email FROM Customer
 UNION
 SELECT first_name, last_name, city_id FROM Employee;
+
+
+/*Widok zawiera unikalne rekordy z tabeli "City" po kolumnach "city_name" i "postal_code".*/
+CREATE VIEW unique_cities AS
+SELECT DISTINCT city_name, postal_code FROM City;
+
+
+/*Widok zawiera wszystkie rekordy z tabeli "Repair_date" gdzie data "start_date" jest między '2022-01-01' a '2022-12-31'.*/
+CREATE VIEW repair_dates_between AS
+SELECT * FROM Repair_date
+WHERE start_date BETWEEN '2022-01-01' AND '2022-12-30';
