@@ -29,7 +29,7 @@ CREATE INDEX repair_date_index ON Repair_date (start_date);
 
 group by
 order by
-update
+update      X
 union
 
 /*pracownicy warsztatu Wyman_Inc*/
@@ -71,3 +71,10 @@ SELECT Car.vin, Car.license_plate, Model.model_name
 FROM Car
 JOIN Model ON Car.model_id = Model.id
 WHERE Model.model_name LIKE '%A6%';
+
+
+/*Widok który łączy dane z tabeli "Customer" i "Employee" */
+CREATE VIEW customer_and_employee AS
+SELECT first_name, last_name, email FROM Customer
+UNION
+SELECT first_name, last_name, city_id FROM Employee;
