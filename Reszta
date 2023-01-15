@@ -22,7 +22,7 @@ CREATE INDEX repair_date_index ON Repair_date (start_date);
 6 count        X
 7 sum          X
 8 avg          X
-9 like
+9 like         X
 10 beetween
 11 mniej wie
 
@@ -65,3 +65,9 @@ CREATE VIEW service_price_avg AS
 SELECT AVG(service_price) as avg_price
 FROM Service;
 
+/*Widok zawiera rekordy z tabeli "Car" i "Model" , które mają frazę "A6" w polu "model_name" tabeli "Model".*/
+CREATE VIEW car_models_like_A6 AS
+SELECT Car.vin, Car.license_plate, Model.model_name
+FROM Car
+JOIN Model ON Car.model_id = Model.id
+WHERE Model.model_name LIKE '%A6%';
