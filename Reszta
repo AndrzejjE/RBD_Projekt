@@ -20,7 +20,7 @@ CREATE INDEX repair_date_index ON Repair_date (start_date);
 4 full join
 5 distinct
 6 count        X
-7 sum
+7 sum          X
 8 avg
 9 like
 10 beetween
@@ -59,3 +59,5 @@ SELECT SUM(Service.service_price) as total_price, Customer.id, Customer.first_na
 FROM Service
 JOIN Customer ON Service.customer_id = Customer.id
 GROUP BY Customer.id;
+
+
