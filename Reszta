@@ -1,13 +1,42 @@
 /*Aby przyspieszyć wyszukiwanie po polu "vin" w tabeli "Car", można dodać indeks unikalny:  */
+
 CREATE UNIQUE INDEX vin_index ON Car (vin);
+
 /*Aby przyspieszyć wyszukiwanie po polach "first_name" i "last_name" w tabeli "Customer", można dodać indeks składający się z tych dwóch pól:*/
+
 CREATE INDEX customer_name_index ON Customer (first_name, last_name);
+
 /*Aby przyspieszyć wyszukiwanie po polu "city_name" w tabeli "City", można dodać indeks:*/
+
 CREATE INDEX city_name_index ON City (city_name);
+
 /*Aby przyspieszyć wyszukiwanie po polu "start_date" w tabeli "Repair_date", można dodać indeks:*/
+
 CREATE INDEX repair_date_index ON Repair_date (start_date);
 
+1 join         X
+2.left join    X
+3 right join
+4 full join
+5 distinct
+6 count        X
+7 sum
+8 avg
+9 like
+10 beetween
+11 mniej wie
 
+
+group by
+order by
+update
+union
+
+/*pracownicy warsztatu Wyman_Inc*/
+SELECT first_name as 'name', last_name as 'surname', shop_name FROM Employee
+    join Schedule S on Employee.id = S.employee_id
+    left join Repair_shop on S.repair_shop_id = Repair_shop.id
+    WHERE shop_name = 'Wyman Inc';
 
 
 /*Liczenie liczby rekordów w tabeli Car*/
