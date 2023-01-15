@@ -52,3 +52,10 @@ FROM Car
 JOIN Customer ON Car.customer_id = Customer.id
 GROUP BY Customer.id;
 
+
+/*Widok który zawiera cenę usług dla klienta, jego imię i nazwisko.*/
+CREATE VIEW Service_price_sum_by_customer AS
+SELECT SUM(Service.service_price) as total_price, Customer.id, Customer.first_name, Customer.last_name
+FROM Service
+JOIN Customer ON Service.customer_id = Customer.id
+GROUP BY Customer.id;
