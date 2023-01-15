@@ -1,2 +1,20 @@
 DROP VIEW pracownicy_warsztatu_Wyman_Inc;
 DROP VIEW suma_pracowników_warsztat_desc;
+
+drop view Customer_Car_count;
+
+drop view Service_price_sum_by_customer;
+
+drop view car_count;
+
+drop view car_manufacturer;
+
+drop view car_models_like_A6;
+
+drop view customer_and_employee;
+
+drop view repair_dates_between;
+
+drop view service_price_avg;
+
+drop view unique_cities;
